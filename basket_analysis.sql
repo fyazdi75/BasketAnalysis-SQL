@@ -1,10 +1,11 @@
 create Table transactions(
-product varchar(255),
-trans-id varchar(255))
+	product varchar(255),
+	trans-id varchar(255)
+	)
 
 create Table product_freq(
-product varchar(255),
-freq int)
+	     product varchar(255),
+	     freq int)
 
 INSERT INTO product_freq (product, freq)
 select product, count(*) from transactions Group by product order by count(*) desc
@@ -12,9 +13,9 @@ select product, count(*) from transactions Group by product order by count(*) de
 --selfjoin 
 
 create Table shop_together(
-product1 varchar(255),
-product2 varchar(255),
-combo_freq int);
+		product1 varchar(255),
+		product2 varchar(255),
+		combo_freq int);
 
 INSERT INTO shop_together (product1,product2,combo_freq)
 select product1,product2, count(*) from full_basket Group by product1,product2 order by count(*) desc
