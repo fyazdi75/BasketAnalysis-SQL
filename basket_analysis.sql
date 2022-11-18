@@ -12,6 +12,16 @@ select product, count(*) from transactions Group by product order by count(*) de
 
 --selfjoin 
 
+create Table full_basket(
+product1 varchar(255),
+product2 varchar(255),
+trans_id int);
+
+INSERT INTO full_basket (product1,product2,trans_id)
+select t1.product as product1, t2.product as product2, t1.trans_id
+from transactions as t1
+Left join transactions as t2
+on t1.trans_id = t2.trans_id
 create Table shop_together(
 		product1 varchar(255),
 		product2 varchar(255),
